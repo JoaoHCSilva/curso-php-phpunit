@@ -1,0 +1,24 @@
+{
+    "name": "joaohenrique/teste-01",
+    "description": "Testes de integração",
+    "autoload": {
+        "psr-4": {
+            "Joaohenrique\\Teste01\\": "src/",
+            "Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "João Henrique C. Silva",
+            "email": "joaohh41@hotmail.com"
+        }
+    ],
+    "require-dev": {
+        "pestphp/pest": "^4.7"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
