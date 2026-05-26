@@ -1,0 +1,22 @@
+{
+    "name": "joohenrique/teste-02",
+    "autoload": {
+        "psr-4": {
+            "Joohenrique\\Teste02\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "João Henrique",
+            "email": "joaohh41@hotmail.com"
+        }
+    ],
+    "require-dev": {
+        "pestphp/pest": "^4.7"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
