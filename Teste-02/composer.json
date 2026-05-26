@@ -2,7 +2,7 @@
     "name": "joohenrique/teste-02",
     "autoload": {
         "psr-4": {
-            "Joohenrique\\Teste02\\": "src/"
+             "Tests\\": "Tests/"
         }
     },
     "authors": [
