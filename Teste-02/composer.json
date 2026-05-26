@@ -2,7 +2,8 @@
     "name": "joohenrique/teste-02",
     "autoload": {
         "psr-4": {
-             "Tests\\": "Tests/"
+            "App\\": "src/",
+            "Tests\\": "Tests/"
         }
     },
     "authors": [

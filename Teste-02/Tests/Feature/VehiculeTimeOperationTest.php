@@ -1,11 +1,13 @@
 <?php
 
-it("Veiculo APOSENTADO se km for maior que 200.000km", function (){
-    $veiculo = [
-        'placa' => 'TEST123',
-        'km' => 200123
-    ];
-    $this->assertTrue($veiculo['km'] > 200000);
+use App\VehicleStatusCheck\VehicleStatusCheck;
+
+it("Veiculo APOSENTADO se km for maior que 200.000km", function () {
+    $checker = new VehicleStatusCheck;
+
+    $status = $checker->checkStatus(200123, 5);
+
+    expect($status)->toBe('Aposentado');
 });
 
 /**
@@ -13,14 +15,11 @@ it("Veiculo APOSENTADO se km for maior que 200.000km", function (){
  * 12 meses sem manutenção, o método deve retornar "Em Manutenção".
  */
 
-it("Veiculo esta EM MANUTENCAO quando estiver a mais de 12 meses sem manutencao e com km aceitável", function(){
-    $veiculo = [
-        'placa' => 'TEST123',
-        'km' => 200000,
-        'ultima_manutencao' => 24,
-    ];
+it("Veiculo esta EM MANUTENCAO quando estiver a mais de 12 meses sem manutencao e com km aceitável", function () {
+    $checker = new VehicleStatusCheck;
+    $status = $checker->checkStatus(18000, 32);
 
-    $this->assertTrue($veiculo['ultima_manutencao'] > 12 && !($veiculo['km']>200000));
+    expect($status)->toBe('Em Manutenção');
 });
 
 
@@ -28,12 +27,9 @@ it("Veiculo esta EM MANUTENCAO quando estiver a mais de 12 meses sem manutencao 
  * Liberado: Se o veículo tiver 200.000 km ou menos E a última manutenção tiver sido feita 
  * há 12 meses ou menos,* o método deve retornar "Disponível"
  */
-it("Veiculo está liberado quando seu km e sua periodicidade de manutenção estiverem aceitáveis", function(){
-      $veiculo = [
-        'placa' => 'TEST123',
-        'km' => 15000,
-        'ultima_manutencao' => 4,
-    ];
+it("Veiculo está liberado quando seu km e sua periodicidade de manutenção estiverem aceitáveis", function () {
+   $checker = new VehicleStatusCheck;
+    $status = $checker->checkStatus(18000, 8);
 
-    $this->assertTrue(!($veiculo['km']>200000) && $veiculo['ultima_manutencao'] <= 12);
+    expect($status)->toBe('Disponível');
 });
